@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>All Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body class="bg-light">
+
+
+<div class="text-center " style="margin-bottom:0;  color: black; ">
+    <div class="col-sm-12 " style="background-color: dimgrey">
+    <h1> A D O P C I O N</h1>
+        <h2>D E</h2>
+        <h1> A N I M A L E S  </h1>
+        <b><p style="color: black">Conciencia por los animales!</p></b>
+
+</div>
+</div>
+
+
+<hr>
+<div class="container" style="margin-top:30px">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <h3>Mas</h3>
+            <p>Otras paginas web</p>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary " href="https://buscafuska.com/pets?utf8=%E2%9C%93&q%5Bcity%5D=&q%5Bcity_id%5D=&q%5Bspecies_id%5D=2&q%5Bbreed_id%5D=&q%5Bsizes%5D%5B%5D=&q%5Bgenders%5D%5B%5D=&q%5Bages%5D%5B%5D=&q%5Blikes_kids%5D=0&q%5Blikes_adults%5D=0&q%5Blikes_pets%5D=0&q%5Benergy_level_ids%5D%5B%5D=&commit=Buscar&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRkY8ANDMVMq6woyRa7B6gmMF291twz5IpfaYqbl73qs7HvmADzSD0saAmUIEALw_wcB">Opcion#1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary" href="https://www.google.com.mx/aclk?sa=l&ai=DChcSEwjPy6jw663oAhXGIK0GHTb_DE8YABACGgJwdg&sig=AOD64_3_v1rucU02GNTdLPSvAJNMT_Kybg&rct=j&q=&ved=2ahUKEwixi6Dw663oAhX8FzQIHU2NA_oQ0Qx6BAgSEAE&adurl=">Opcion#2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary   " href="https://www.fundacion-affinity.org/perros-gatos-y-personas/busco-una-mascota/la-adopcion-una-nueva-oportunidad-para-las-mascotas">Opcion#3</a>
+                </li>
+
+            </ul>
+            <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-8">
+            <h2>Encuentra tu mascota ideal</h2>
+            <h5>Cómo describirías a tu mascota perfecta? </h5>
+
+            <p>Dato Curioso:</p>
+            <p>Los perros pueden detectar nuestras emociones que se reflejan en nuestro rostro, son capaces
+                de saber si estamos alegres, enfadados o tristes.La temperatura del cuerpo de
+                un perro es más alta que la de un humano. La temperatura corporal en los perros está entre 38 y 39º.</p>
+            <img src="static/Imagenes/portada.jpg">
+            <br>
+            <h2>¿Te gustaría un animal enérgico?</h2>
+            <h5>O tal vez quieras un fiel compañero para ir a caminar.</h5>
+            <div class="fakeimg" style="background-image: url(../Imagenes/perroLoco.jpg)">Diversidad</div>
+            <p>Dato Curioso:</p>
+            <p>El rango de visión de un gato no incluye la zona por debajo de su nariz. ... Los gatos tienen más
+                huesos que los seres humanos, nos ganan por 24. Cuando
+                los gatos maúllan lo hacen para comunicarse con humanos y no con otros gatos.</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container my-2">
+    <div class="card">
+    <div class="card-body">
+        <div th:switch="${employees}" class="container my-5">
+            <p class="my-5">
+                <a href="/edit" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> Registrar</i></a>
+            </p>
+            <div class="col-md-10">
+                <h2 th:case="null">No record found !!</h2>
+                <div th:case="*">
+                    <table class="table table-striped table-responsive-md">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Color</th>
+                                <th>Tipo de Pelaje</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Raza</th>
+                                <th>Vacunas</th>
+                                <th>Estado</th>
+                                <th>Adoptivo</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  th:each="employee : ${employees}">
+                                <td th:text="${employee.tipo}"></td>
+                                <td th:text="${employee.color}"></td>
+                                <td th:text="${employee.pelaje}"></td>
+                                <td th:text="${employee.fecha_nacimiento}"></td>
+                                <td th:text="${employee.raza}"></td>
+                                <td th:text="${employee.vacunas}"></td>
+                                <td th:text="${employee.estado}"></td>
+                                <td th:text="${employee.adoptivo}"></td>
+
+
+
+                                <td>
+                                    <a th:href="@{/edit/{id}(id=${employee.id})}" class="btn btn-success">
+                                       Adoptar
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a th:href="@{/delete/{id}(id=${employee.id})}" class="btn btn-danger">
+                                       Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
