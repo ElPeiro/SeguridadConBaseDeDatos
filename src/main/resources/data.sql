@@ -7,4 +7,4 @@ VALUES
   	INSERT INTO USERS
     (password,roles,username)
     VALUES
-    ('123','admin','nuez');
+    ('123','ADMIN','nuez');

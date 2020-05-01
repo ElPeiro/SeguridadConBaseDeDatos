@@ -17,37 +17,35 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-  /*  @Autowired
+   @Autowired
     UserDetailsService userDetailsService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService);
-    }*/
+    }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                        .antMatchers("/", "/list-employees.html").permitAll()
+                        .antMatchers("/").permitAll()
                         .antMatchers("/*.png","/*.jpg","/*.jpeg").permitAll()
                         .anyRequest().authenticated()
                         .and()
                 .formLogin()
-                        .loginPage("/login")
                         .permitAll()
-                        .defaultSuccessUrl("/add-edit-employee.html")
                         .and()
                 .logout()
                         .permitAll();
     }
 
 
-  /*  @Bean
+    @Bean
     public PasswordEncoder getPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
-    }*/
+    }
 
 
-    @Bean
+   /* @Bean
     @Override
     public UserDetailsService userDetailsService() {
         UserDetails user =
@@ -58,5 +56,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .build();
 
         return new InMemoryUserDetailsManager(user);
-    }
+    }*/
 }
