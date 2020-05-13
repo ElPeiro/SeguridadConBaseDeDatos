@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.uabc.edu.appswbd.examen.exception.RecordNotFoundException;
-import com.uabc.edu.appswbd.examen.model.EmployeeEntity;
+import com.uabc.edu.appswbd.examen.model.AnimalesEntity;
 import com.uabc.edu.appswbd.examen.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class EmployeeMvcController
 	@RequestMapping
 	public String getAllEmployees(Model model) 
 	{
-		List<EmployeeEntity> list = service.getAllEmployees();
+		List<AnimalesEntity> list = service.getAllEmployees();
 
 		model.addAttribute("employees", list);
 		return "list-employees";
@@ -36,10 +36,10 @@ public class EmployeeMvcController
 							throws RecordNotFoundException 
 	{
 		if (id.isPresent()) {
-			EmployeeEntity entity = service.getEmployeeById(id.get());
+			AnimalesEntity entity = service.getEmployeeById(id.get());
 			model.addAttribute("employee", entity);
 		} else {
-			model.addAttribute("employee", new EmployeeEntity());
+			model.addAttribute("employee", new AnimalesEntity());
 		}
 		return "add-edit-employee";
 	}
@@ -53,7 +53,7 @@ public class EmployeeMvcController
 	}
 
 	@RequestMapping(path = "/createEmployee", method = RequestMethod.POST)
-	public String createOrUpdateEmployee(EmployeeEntity employee) 
+	public String createOrUpdateEmployee(AnimalesEntity employee)
 	{
 		service.createOrUpdateEmployee(employee);
 		return "redirect:/";

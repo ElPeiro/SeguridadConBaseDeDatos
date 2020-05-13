@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.uabc.edu.appswbd.examen.exception.RecordNotFoundException;
-import com.uabc.edu.appswbd.examen.model.EmployeeEntity;
+import com.uabc.edu.appswbd.examen.model.AnimalesEntity;
 import com.uabc.edu.appswbd.examen.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,20 +19,20 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository repository;
 	
-	public List<EmployeeEntity> getAllEmployees()
+	public List<AnimalesEntity> getAllEmployees()
 	{
-		List<EmployeeEntity> result = (List<EmployeeEntity>) repository.findAll();
+		List<AnimalesEntity> result = (List<AnimalesEntity>) repository.findAll();
 		
 		if(result.size() > 0) {
 			return result;
 		} else {
-			return new ArrayList<EmployeeEntity>();
+			return new ArrayList<AnimalesEntity>();
 		}
 	}
 	
-	public EmployeeEntity getEmployeeById(Long id) throws RecordNotFoundException
+	public AnimalesEntity getEmployeeById(Long id) throws RecordNotFoundException
 	{
-		Optional<EmployeeEntity> employee = repository.findById(id);
+		Optional<AnimalesEntity> employee = repository.findById(id);
 		
 		if(employee.isPresent()) {
 			return employee.get();
@@ -41,7 +41,7 @@ public class EmployeeService {
 		}
 	}
 	
-	public EmployeeEntity createOrUpdateEmployee(EmployeeEntity entity) 
+	public AnimalesEntity createOrUpdateEmployee(AnimalesEntity entity)
 	{
 		if(entity.getId()  == null) 
 		{
@@ -51,11 +51,11 @@ public class EmployeeService {
 		} 
 		else 
 		{
-			Optional<EmployeeEntity> employee = repository.findById(entity.getId());
+			Optional<AnimalesEntity> employee = repository.findById(entity.getId());
 			
 			if(employee.isPresent()) 
 			{
-				EmployeeEntity newEntity = employee.get();
+				AnimalesEntity newEntity = employee.get();
 				newEntity.setTipo(entity.getTipo());
 				newEntity.setRaza(entity.getRaza());
 				newEntity.setColor(entity.getColor());
@@ -90,7 +90,7 @@ public class EmployeeService {
 	
 	public void deleteEmployeeById(Long id) throws RecordNotFoundException 
 	{
-		Optional<EmployeeEntity> employee = repository.findById(id);
+		Optional<AnimalesEntity> employee = repository.findById(id);
 		
 		if(employee.isPresent()) 
 		{
