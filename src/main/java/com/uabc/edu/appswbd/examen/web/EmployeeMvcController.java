@@ -124,26 +124,34 @@ public class EmployeeMvcController
 
 	}
 
-	@RequestMapping(path = {"/CREACION","/EDICIONusuarios/{id}"})
+	@RequestMapping(path = {"createUsuarios","/EDICIONusuarios/{id}"})
 	public String editarUSUARIO(Model model, @PathVariable("id") Optional<Long> id)
 			throws RecordNotFoundException
 	{
 
 		if (id.isPresent())
 		{
-			Usuario entityUsuario = service3.getUsuarioById(id.get());
-			model.addAttribute("US", entityUsuario);
+			Usuario usuarioxxx = service3.getUsuarioById(id.get());
+			model.addAttribute("US", usuarioxxx);
 		} else {
-			model.addAttribute("US", new Productos());
+			model.addAttribute("US", new Usuario());
 		}
 
 		return "FormUsuarios.html";
 	}
 
-	@RequestMapping(path = "/createArticulo", method = RequestMethod.POST)
-	public String createUsuarioORupdate(Usuario usser)
+	@RequestMapping(path = "/createUsuarioFinal", method = RequestMethod.POST)
+	public String createUsuarioORupdate(Usuario US)
 	{
-		service3.createOrUpdateUsuario(usser);
+		service3.createOrUpdateUsuario(US);
+		return "redirect:/USUARIOSnew";
+	}
+
+	@RequestMapping(path = "/deleteUs/{id}")
+	public String deleteUs(Model model, @PathVariable("id") Long id)
+			throws RecordNotFoundException
+	{
+		service2.deleteArticulo(id);
 		return "redirect:/ari";
 	}
 

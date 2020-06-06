@@ -59,6 +59,7 @@ public class usuarioService {
             {
                 Usuario newEntity = product.get();
                 newEntity.setUserName(entity.getUserName());
+                newEntity.setRoles("ADMIN");
                 newEntity.setPassword(entity.getPassword());
 
 

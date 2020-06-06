@@ -55,7 +55,7 @@
         <div class="card-body">
             <div th:switch="${US}" class="container my-5">
                 <p class="my-5">
-                    <a href="/CREACION" class="btn btn-primary">
+                    <a href="/createUsuarios" class="btn btn-primary">
                         <i class="far fa-user"></i> Registrar Usuario</a>
                 </p>
                 <div class="col-md-10">
@@ -79,13 +79,13 @@
 
 
                                 <td>
-                                    <a   class="btn btn-primary text-light">
+                                    <a  th:href="@{/EDICIONusuarios/{id}(id=${user.id})}" class="btn btn-primary text-light">
                                         <i class="fas fa-wrench"></i>  Modificar Usuario
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a  class="btn btn-danger text-light">
+                                    <a th:href="@{/deleteUs/{id}(id=${user.id})}" class="btn btn-danger text-light">
                                         <i class="fas fa-trash-alt"></i>  Eliminar Usuario
                                     </a>
                                 </td>
