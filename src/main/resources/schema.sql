@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS TBL_EMPLOYEES;
  DROP TABLE IF EXISTS  USERS;
+ DROP TABLE IF EXISTS articulos;
 CREATE TABLE TBL_EMPLOYEES (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   tipo VARCHAR(250) NOT NULL,
@@ -20,3 +21,11 @@ password varchar(10) not null,
 roles varchar(30)  not null,
 username varchar(30) not null
 );
+
+CREATE TABLE articulos(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR (30) not null,
+codigo VARCHAR (10) not null,
+precio DOUBLE not null
+)
+

@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.uabc.edu.appswbd.examen.exception.RecordNotFoundException;
 import com.uabc.edu.appswbd.examen.model.AnimalesEntity;
-import com.uabc.edu.appswbd.examen.repository.EmployeeRepository;
+import com.uabc.edu.appswbd.examen.repository.AnimalesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import static java.lang.Integer.parseInt;
 public class EmployeeService {
 	
 	@Autowired
-	EmployeeRepository repository;
+    AnimalesRepository repository;
 	
 	public List<AnimalesEntity> getAllEmployees()
 	{

@@ -8,3 +8,8 @@ VALUES
     (password,roles,username)
     VALUES
     ('123','ADMIN','nuez');
+
+    INSERT INTO articulos
+    (nombre,codigo,precio)
+    VALUES
+    ('SHAMPOO','HY1289OP','25.50');
